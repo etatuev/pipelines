@@ -25,3 +25,32 @@ _Note the --no-build arg, it's required._
 | Pipelines | 90.9% | 70%    | 88.88% |
 +-----------+-------+--------+--------+
 ```
+
+## Example
+
+```
+T LogStep<T>(T prev)
+{
+    _console.WriteLine(prev.ToString());
+    return prev;
+}
+
+Pipeline<string,int> stringLengthPipeline = PipelineBuilder.Create<string>()
+    .AddStep(new ConcatStringPipelineStep(", let's count "))
+    .AddStep(new ConcatStringPipelineStep("this string length!"))
+    .AddStep(LogStep)
+    .AddStep(new StringLengthPipelineStep())
+    .Build();
+
+
+Pipeline<string,string> pipeline = PipelineBuilder
+    .Create<string>()
+    .AddStep(LogStep)
+    .AddStep(stringLengthPipeline)
+    .AddStep(length => $"So, result is {length}")
+    .Build();
+
+string result = await pipeline.ExecuteAsync("Hello");
+
+_console.WriteLine(result);
+```
