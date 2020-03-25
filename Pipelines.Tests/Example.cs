@@ -6,47 +6,45 @@ using Xunit.Abstractions;
 
 namespace Pipelines.Tests
 {
-    
-    public class ExampleTest
+    public class Example
     {
-        private readonly ITestOutputHelper _console;
+        // So example can be easily copy-pasted
+        // ReSharper disable once InconsistentNaming
+        private readonly ITestOutputHelper Console;
 
-        public ExampleTest(ITestOutputHelper console)
+        public Example(ITestOutputHelper console)
         {
-            _console = console;
+            Console = console;
         }
 
         [Fact]
-        public async Task Example()
+        public async Task ExampleTest()
         {
-            
-            
             T LogStep<T>(T prev)
             {
-                _console.WriteLine(prev.ToString());
+                Console.WriteLine(prev.ToString());
                 return prev;
             }
 
-            Pipeline<string,int> stringLengthPipeline = PipelineBuilder.Create<string>()
+            Pipeline<string, int> stringLengthPipeline = PipelineBuilder
+                .Create<string>()
                 .AddStep(new ConcatStringPipelineStep(", let's count "))
                 .AddStep(new ConcatStringPipelineStep("this string length!"))
                 .AddStep(LogStep)
                 .AddStep(new StringLengthPipelineStep())
                 .Build();
 
-
-            Pipeline<string,string> pipeline = PipelineBuilder
+            Pipeline<string, string> pipeline = PipelineBuilder
                 .Create<string>()
                 .AddStep(LogStep)
                 .AddStep(stringLengthPipeline)
                 .AddStep(length => $"So, result is {length}")
                 .Build();
-            
-            string result = await pipeline.ExecuteAsync("Hello");
-            
-            _console.WriteLine(result);
 
-            // Assert
+            string result = await pipeline.ExecuteAsync("Hello");
+
+            Console.WriteLine(result);
+
             Assert.Equal("So, result is 38", result);
         }
     }

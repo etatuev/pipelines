@@ -31,19 +31,19 @@ _Note the --no-build arg, it's required._
 ```c#
 T LogStep<T>(T prev)
 {
-    _console.WriteLine(prev.ToString());
+    Console.WriteLine(prev.ToString());
     return prev;
 }
 
-Pipeline<string,int> stringLengthPipeline = PipelineBuilder.Create<string>()
+Pipeline<string, int> stringLengthPipeline = PipelineBuilder
+    .Create<string>()
     .AddStep(new ConcatStringPipelineStep(", let's count "))
     .AddStep(new ConcatStringPipelineStep("this string length!"))
     .AddStep(LogStep)
     .AddStep(new StringLengthPipelineStep())
     .Build();
 
-
-Pipeline<string,string> pipeline = PipelineBuilder
+Pipeline<string, string> pipeline = PipelineBuilder
     .Create<string>()
     .AddStep(LogStep)
     .AddStep(stringLengthPipeline)
@@ -52,7 +52,7 @@ Pipeline<string,string> pipeline = PipelineBuilder
 
 string result = await pipeline.ExecuteAsync("Hello");
 
-_console.WriteLine(result);
+Console.WriteLine(result);
 ```
 Output will be:
 

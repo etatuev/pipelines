@@ -45,7 +45,7 @@ namespace Pipelines
         [MustUseReturnValue("It's designed to be used in a \"chain\" way, e.g. 'builder.AddStep(..).AddStep(..)'")]
         public PipelineBuilder<T, TNextOut> AddStep<TNextOut>(Func<TOut, TNextOut> stepFunc)
         {
-            return AddStep(PipelineStep.From(stepFunc));
+            return AddStep(new DelegatePipelineStep<TOut, TNextOut>(stepFunc));
         }
 
         /// <summary>
@@ -58,7 +58,7 @@ namespace Pipelines
         [MustUseReturnValue("It's designed to be used in a \"chain\" way, e.g. 'builder.AddStep(..).AddStep(..)'")]
         public PipelineBuilder<T, TNextOut> AddStep<TNextOut>(Func<TOut, Task<TNextOut>> stepFunc)
         {
-            return AddStep(PipelineStep.From(stepFunc));
+            return AddStep(new AsyncDelegatePipelineStep<TOut, TNextOut>(stepFunc));
         }
 
         /// <summary>
@@ -78,7 +78,7 @@ namespace Pipelines
             }
             else
             {
-                _steps[_steps.Count - 1] = pipelineStep;
+                _steps[^1] = pipelineStep;
             }
 
             return new PipelineBuilder<T, TNextOut>(Steps);
