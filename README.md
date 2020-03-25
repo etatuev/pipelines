@@ -54,3 +54,10 @@ string result = await pipeline.ExecuteAsync("Hello");
 
 _console.WriteLine(result);
 ```
+Output will be:
+
+```
+Hello
+Hello, let's count this string length!
+So, result is 38
+```
