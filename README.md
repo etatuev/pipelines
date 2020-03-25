@@ -16,7 +16,7 @@ Simple pipeline implementation
 
 _Note the --no-build arg, it's required._
 
-`coverlet --target="dotnet" --targetargs="test --no-build"  .\Pipelines.Tests\bin\Debug\netcoreapp3.1\Pipelines.Tests.dll`
+`coverlet --target="dotnet" --targetargs="test --no-build" .\Pipelines.Tests\bin\Debug\netcoreapp3.1\Pipelines.Tests.dll`
 
 ```
 +-----------+-------+--------+--------+
@@ -28,7 +28,7 @@ _Note the --no-build arg, it's required._
 
 ## Example
 
-```
+```c#
 T LogStep<T>(T prev)
 {
     _console.WriteLine(prev.ToString());
