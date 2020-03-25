@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pipelines", "Pipelines\Pipelines.csproj", "{8D8CB570-CD36-4753-BA8A-71CDFA846415}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pipelines.Tests", "Pipelines.Tests\Pipelines.Tests.csproj", "{A5E0537F-A412-4488-AEB6-F3EFFFB95835}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8D8CB570-CD36-4753-BA8A-71CDFA846415}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D8CB570-CD36-4753-BA8A-71CDFA846415}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D8CB570-CD36-4753-BA8A-71CDFA846415}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D8CB570-CD36-4753-BA8A-71CDFA846415}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A5E0537F-A412-4488-AEB6-F3EFFFB95835}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5E0537F-A412-4488-AEB6-F3EFFFB95835}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5E0537F-A412-4488-AEB6-F3EFFFB95835}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5E0537F-A412-4488-AEB6-F3EFFFB95835}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
